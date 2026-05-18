@@ -1,70 +1,155 @@
-# Getting Started with Create React App
+# Salesforce Validation Rule Manager
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A full-stack Salesforce administration dashboard built using React.js, Node.js, Express.js, and Salesforce APIs. This application allows users to securely authenticate with Salesforce, fetch validation rules dynamically, and enable or disable validation rules directly from a web interface using Salesforce Tooling API and Metadata API.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+# Live Demo
 
-### `npm start`
+Frontend: (https://salesforce-validation-rule-manager-flame.vercel.app/)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Backend: https://salesforce-validation-rule-manager-ad6h.onrender.com
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# Features
 
-### `npm run build`
+* Salesforce OAuth 2.0 Authentication with PKCE
+* Fetch Salesforce Validation Rules dynamically
+* Enable or Disable individual validation rules
+* Enable All validation rules
+* Disable All validation rules
+* Real-time Salesforce Metadata API updates
+* Responsive React UI
+* Loading states during API requests
+* Disabled buttons while requests are processing
+* Cloud deployment using Vercel and Render
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+---
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+# Tech Stack
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Frontend
 
-### `npm run eject`
+* React.js
+* Axios
+* CSS
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Backend
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+* Node.js
+* Express.js
+* JSForce
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Salesforce APIs
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+* OAuth 2.0 PKCE Flow
+* Salesforce Tooling API
+* Salesforce Metadata API
 
-## Learn More
+## Deployment
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+* Vercel (Frontend)
+* Render (Backend)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+---
 
-### Code Splitting
+# Application Workflow
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+1. User logs in using Salesforce OAuth authentication.
+2. Backend authenticates the user using OAuth 2.0 PKCE flow.
+3. Validation rules are fetched dynamically from Salesforce using Tooling API.
+4. User can enable or disable validation rules directly from the dashboard.
+5. Changes are deployed back to Salesforce using Metadata API.
 
-### Analyzing the Bundle Size
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
+# Environment Variables
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Create a `.env` file inside the backend folder and add the following variables:
 
-### Advanced Configuration
+```env
+CLIENT_ID=your_salesforce_client_id
+CLIENT_SECRET=your_salesforce_client_secret
+REDIRECT_URI=your_callback_url
+LOGIN_URL=https://login.salesforce.com
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+---
 
-### Deployment
+# Installation and Setup
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Clone Repository
 
-### `npm run build` fails to minify
+```bash
+git clone  https://github.com/Hshariq123/salesforce-validation-rule-manager
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+---
+
+## Backend Setup
+
+```bash
+cd backend
+npm install
+node server.js
+```
+
+Backend will run on:
+
+```text
+http://localhost:5000
+```
+
+---
+
+## Frontend Setup
+
+```bash
+cd frontend
+npm install
+npm start
+```
+
+Frontend will run on:
+
+```text
+http://localhost:3000
+```
+
+
+
+# Key Learnings
+
+* OAuth 2.0 PKCE Authentication
+* Salesforce Tooling API Integration
+* Salesforce Metadata API Updates
+* Full-stack cloud deployment
+* React state management
+* Secure API integration
+* Metadata automation
+
+---
+
+
+# Future Improvements
+
+* Toggle switch UI
+* Search and filter validation rules
+* Better notifications and alerts
+* Rule grouping by object
+* Authentication persistence
+* Improved error handling
+
+---
+
+# Author
+
+Shariq Hussain
+
+---
+
+# License
+
+This project is developed for educational and assignment purposes.
