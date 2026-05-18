@@ -294,9 +294,76 @@ app.get('/logout', async (req, res) => {
         instanceUrl = '';
         conn = null;
 
-        res.redirect(
-            'https://salesforce-validation-rule-manager-flame.vercel.app/'
-        );
+        res.send(`
+            <html>
+
+                <head>
+
+                    <title>Logout Successful</title>
+
+                    <style>
+
+                        body {
+                            font-family: Arial, sans-serif;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            height: 100vh;
+                            background-color: #f4f6f9;
+                            margin: 0;
+                        }
+
+                        .container {
+                            text-align: center;
+                            background: white;
+                            padding: 40px;
+                            border-radius: 12px;
+                            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+                        }
+
+                        h1 {
+                            color: #dc3545;
+                            margin-bottom: 10px;
+                        }
+
+                        p {
+                            color: #555;
+                            font-size: 16px;
+                        }
+
+                    </style>
+
+                    <script>
+
+                        localStorage.clear();
+
+                        setTimeout(() => {
+
+                            window.location.href =
+                            'https://salesforce-validation-rule-manager-flame.vercel.app/';
+
+                        }, 2000);
+
+                    </script>
+
+                </head>
+
+                <body>
+
+                    <div class="container">
+
+                        <h1>Logged Out Successfully</h1>
+
+                        <p>Your Salesforce session has ended.</p>
+
+                        <p>Redirecting to login page...</p>
+
+                    </div>
+
+                </body>
+
+            </html>
+        `);
 
     } catch (error) {
 
