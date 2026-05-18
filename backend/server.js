@@ -113,7 +113,7 @@ app.get('/auth/callback', async (req, res) => {
                         setTimeout(() => {
 
                             window.location.href =
-                            'https://salesforce-validation-rule-manager-ad6h.onrender.com';
+                            'https://salesforce-validation-rule-manager-flame.vercel.app/';
 
                         }, 3000);
 
