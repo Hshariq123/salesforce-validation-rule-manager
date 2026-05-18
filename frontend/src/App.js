@@ -7,7 +7,7 @@ function App() {
   const [rules, setRules] = useState([]);
 
   const loginToSalesforce = () => {
-    window.location.href = 'http://localhost:5000/login';
+    window.location.href = 'https://salesforce-validation-rule-manager-ad6h.onrender.com/login';
   };
 
   const fetchValidationRules = async () => {
@@ -15,7 +15,7 @@ function App() {
     try {
 
       const response = await axios.get(
-        'http://localhost:5000/validation-rules'
+        'https://salesforce-validation-rule-manager-ad6h.onrender.com/validation-rules'
       );
 
       setRules(response.data);
@@ -31,7 +31,7 @@ function App() {
     try {
 
       await axios.post(
-        'http://localhost:5000/toggle-rule',
+        'https://salesforce-validation-rule-manager-ad6h.onrender.com/toggle-rule',
         {
           fullName: rule.FullName,
           active: !rule.Active
@@ -51,7 +51,7 @@ function App() {
     try {
 
       await axios.post(
-        'http://localhost:5000/toggle-all',
+        'https://salesforce-validation-rule-manager-ad6h.onrender.com/toggle-all',
         {
           active: activeState
         }
