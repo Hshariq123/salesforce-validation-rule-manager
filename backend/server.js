@@ -171,14 +171,14 @@ app.get('/validation-rules', async (req, res) => {
             }
         );
 
-       const cleanedRules = response.data.records.map(rule => ({
-    Id: rule.Id,
-    ValidationName: rule.ValidationName,
-    Active: rule.Active,
+        const cleanedRules = response.data.records.map(rule => ({
+            Id: rule.Id,
+            ValidationName: rule.ValidationName,
+            Active: rule.Active,
 
-    FullName:
-      `${rule.EntityDefinition.QualifiedApiName}.${rule.ValidationName}`
-}));
+            FullName:
+                `${rule.EntityDefinition.QualifiedApiName}.${rule.ValidationName}`
+        }));
 
         res.json(cleanedRules);
     } catch (error) {
@@ -332,19 +332,18 @@ app.get('/logout', async (req, res) => {
                         }
 
                     </style>
+<script>
 
-                    <script>
+    localStorage.clear();
 
-                        localStorage.clear();
+    setTimeout(() => {
 
-                        setTimeout(() => {
+        window.location.href =
+        'https://login.salesforce.com/secur/logout.jsp?retUrl=https://salesforce-validation-rule-manager-flame.vercel.app/';
 
-                            window.location.href =
-                            'https://salesforce-validation-rule-manager-flame.vercel.app/';
+    }, 1500);
 
-                        }, 2000);
-
-                    </script>
+</script>
 
                 </head>
 
