@@ -77,6 +77,13 @@ LOGIN_URL=https://login.salesforce.com
 ```
 
 ---
+# Screenshots
+<p align="center">
+  <img src="screenshots/1.png" width="30%" />
+  <img src="screenshots/2.png" width="30%" />
+  <img src="screenshots/3.png" width="30%" />
+</p>
+---
 
 # Installation and Setup
 
