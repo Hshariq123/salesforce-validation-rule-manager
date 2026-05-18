@@ -65,10 +65,78 @@ app.get('/auth/callback', async (req, res) => {
             instanceUrl,
             accessToken
         });
+
         console.log("Access Token:", accessToken);
         console.log("Instance URL:", instanceUrl);
 
-        res.send('Salesforce Login Successful');
+        res.send(`
+            <html>
+
+                <head>
+
+                    <title>Login Successful</title>
+
+                    <style>
+
+                        body {
+                            font-family: Arial, sans-serif;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            height: 100vh;
+                            background-color: #f4f6f9;
+                            margin: 0;
+                        }
+
+                        .container {
+                            text-align: center;
+                            background: white;
+                            padding: 40px;
+                            border-radius: 12px;
+                            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+                        }
+
+                        h1 {
+                            color: #28a745;
+                            margin-bottom: 10px;
+                        }
+
+                        p {
+                            color: #555;
+                            font-size: 16px;
+                        }
+
+                    </style>
+
+                    <script>
+
+                        setTimeout(() => {
+
+                            window.location.href =
+                            'https://salesforce-validation-rule-manager-ad6h.onrender.com';
+
+                        }, 3000);
+
+                    </script>
+
+                </head>
+
+                <body>
+
+                    <div class="container">
+
+                        <h1>Login Successful</h1>
+
+                        <p>You are now connected to Salesforce.</p>
+
+                        <p>Redirecting to dashboard...</p>
+
+                    </div>
+
+                </body>
+
+            </html>
+        `);
 
     } catch (error) {
 
