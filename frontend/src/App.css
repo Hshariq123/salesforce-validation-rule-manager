@@ -112,3 +112,16 @@ button:disabled {
   opacity: 0.6;
   cursor: not-allowed;
 }
+.logout-btn {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 12px 18px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.logout-btn:hover {
+  opacity: 0.9;
+}

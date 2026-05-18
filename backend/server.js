@@ -281,6 +281,30 @@ app.post('/toggle-all', async (req, res) => {
         });
     }
 });
+app.get('/logout', async (req, res) => {
+
+    try {
+
+        if (conn) {
+
+            await conn.logout();
+        }
+
+        accessToken = '';
+        instanceUrl = '';
+        conn = null;
+
+        res.redirect(
+            'https://salesforce-validation-rule-manager-flame.vercel.app/'
+        );
+
+    } catch (error) {
+
+        console.log(error);
+
+        res.status(500).send('Logout failed');
+    }
+});
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });

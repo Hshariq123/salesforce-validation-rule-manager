@@ -10,6 +10,11 @@ function App() {
   const loginToSalesforce = () => {
     window.location.href = 'https://salesforce-validation-rule-manager-ad6h.onrender.com/login';
   };
+  const logoutFromSalesforce = () => {
+
+  window.location.href =
+  'https://salesforce-validation-rule-manager-ad6h.onrender.com/logout';
+};
 const fetchValidationRules = async () => {
 
   try {
@@ -102,7 +107,13 @@ const toggleAllRules = async (activeState) => {
         >
           Login with Salesforce
         </button>
-
+<button
+  className="logout-btn"
+  onClick={logoutFromSalesforce}
+  disabled={loading}
+>
+  Logout
+</button>
         <button
           className="primary-btn" 
           onClick={fetchValidationRules} disabled={loading}
