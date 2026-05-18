@@ -5,65 +5,80 @@ import './App.css';
 function App() {
 
   const [rules, setRules] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const loginToSalesforce = () => {
     window.location.href = 'https://salesforce-validation-rule-manager-ad6h.onrender.com/login';
   };
+const fetchValidationRules = async () => {
 
-  const fetchValidationRules = async () => {
+  try {
 
-    try {
+    setLoading(true);
 
-      const response = await axios.get(
-        'https://salesforce-validation-rule-manager-ad6h.onrender.com/validation-rules'
-      );
+    const response = await axios.get(
+      'https://salesforce-validation-rule-manager-ad6h.onrender.com/validation-rules'
+    );
 
-      setRules(response.data);
+    setRules(response.data);
 
-    } catch (error) {
+  } catch (error) {
 
-      console.log(error);
-    }
-  };
+    console.log(error);
 
-  const toggleRule = async (rule) => {
+  } finally {
 
-    try {
+    setLoading(false);
+  }
+};
 
-      await axios.post(
-        'https://salesforce-validation-rule-manager-ad6h.onrender.com/toggle-rule',
-        {
-          fullName: rule.FullName,
-          active: !rule.Active
-        }
-      );
+ const toggleRule = async (rule) => {
+  try {
 
-      fetchValidationRules();
+    setLoading(true);
 
-    } catch (error) {
+    await axios.post(
+      'https://salesforce-validation-rule-manager-ad6h.onrender.com/toggle-rule',
+      {
+        fullName: rule.FullName,
+        active: !rule.Active
+      }
+    );
 
-      console.log(error);
-    }
-  };
+    await fetchValidationRules();
 
-  const toggleAllRules = async (activeState) => {
+  } catch (error) {
 
-    try {
+    console.log(error);
 
-      await axios.post(
-        'https://salesforce-validation-rule-manager-ad6h.onrender.com/toggle-all',
-        {
-          active: activeState
-        }
-      );
+  } finally {
 
-      fetchValidationRules();
+    setLoading(false);
+  }
+};
+const toggleAllRules = async (activeState) => {
+  try {
 
-    } catch (error) {
+    setLoading(true);
 
-      console.log(error);
-    }
-  };
+    await axios.post(
+      'https://salesforce-validation-rule-manager-ad6h.onrender.com/toggle-all',
+      {
+        active: activeState
+      }
+    );
+
+    await fetchValidationRules();
+
+  } catch (error) {
+
+    console.log(error);
+
+  } finally {
+
+    setLoading(false);
+  }
+};
 
   return (
 
@@ -83,34 +98,40 @@ function App() {
 
         <button
           className="primary-btn"
-          onClick={loginToSalesforce}
+          onClick={loginToSalesforce} disabled={loading}
         >
           Login with Salesforce
         </button>
 
         <button
-          className="primary-btn"
-          onClick={fetchValidationRules}
+          className="primary-btn" 
+          onClick={fetchValidationRules} disabled={loading}
         >
           Fetch Validation Rules
         </button>
 
         <button
           className="enable-btn"
-          onClick={() => toggleAllRules(true)}
+          onClick={() => toggleAllRules(true)} disabled={loading}
         >
           Enable All
         </button>
 
         <button
           className="disable-btn"
-          onClick={() => toggleAllRules(false)}
+          onClick={() => toggleAllRules(false)} disabled={loading}
         >
           Disable All
         </button>
 
       </div>
-
+{
+  loading && (
+    <p className="loading-text">
+      Processing Salesforce request...
+    </p>
+  )
+}
       <div className="table-container">
 
         <table>
@@ -155,7 +176,7 @@ function App() {
                         ? 'disable-btn'
                         : 'enable-btn'
                     }
-                    onClick={() => toggleRule(rule)}
+                    onClick={() => toggleRule(rule)} disabled={loading}
                   >
                     {rule.Active ? 'Disable' : 'Enable'}
                   </button>
