@@ -17,6 +17,31 @@ function App() {
     }
 
   }, []);
+  useEffect(() => {
+
+  const urlParams =
+    new URLSearchParams(window.location.search);
+
+  const loggedIn =
+    urlParams.get('loggedIn');
+
+  if (loggedIn === 'true') {
+
+    setIsLoggedIn(true);
+
+    localStorage.setItem(
+      'salesforceLoggedIn',
+      'true'
+    );
+
+    window.history.replaceState(
+      {},
+      document.title,
+      "/"
+    );
+  }
+
+}, []);
   const loginToSalesforce = () => {
 
     window.location.href =

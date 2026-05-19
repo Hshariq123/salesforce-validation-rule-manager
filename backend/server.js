@@ -112,9 +112,7 @@ app.get('/auth/callback', async (req, res) => {
 
                         setTimeout(() => {
 
-                            window.location.href =
-                            'https://salesforce-validation-rule-manager-flame.vercel.app/';
-
+                            window.location.href ='https://salesforce-validation-rule-manager-flame.vercel.app/?loggedIn=true'
                         }, 3000);
 
                     </script>
