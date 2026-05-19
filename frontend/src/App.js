@@ -22,13 +22,9 @@ function App() {
     window.location.href =
       'https://salesforce-validation-rule-manager-ad6h.onrender.com/login';
   };
- const logoutFromSalesforce = async () => {
+const logoutFromSalesforce = async () => {
 
   try {
-
-    await axios.get(
-      'https://salesforce-validation-rule-manager-ad6h.onrender.com'
-    );
 
     localStorage.removeItem(
       'salesforceLoggedIn'
@@ -39,7 +35,7 @@ function App() {
     setIsLoggedIn(false);
 
     window.location.href =
-      'https://salesforce-validation-rule-manager-flame.vercel.app';
+      'https://salesforce-validation-rule-manager-ad6h.onrender.com/logout';
 
   } catch (error) {
 
@@ -58,6 +54,10 @@ function App() {
 
       setRules(response.data);
       setIsLoggedIn(true);
+      localStorage.setItem(
+        'salesforceLoggedIn',
+        'true'
+      );
     } catch (error) {
 
       console.log(error);
@@ -131,69 +131,69 @@ function App() {
       </div>
       <div className="top-actions">
 
-  {
+        {
 
-    !isLoggedIn ? (
+          !isLoggedIn ? (
 
-      <button
-        className="primary-btn"
-        onClick={loginToSalesforce}
-        disabled={loading}
-      >
-        Login with Salesforce
-      </button>
+            <button
+              className="primary-btn"
+              onClick={loginToSalesforce}
+              disabled={loading}
+            >
+              Login with Salesforce
+            </button>
 
-    ) : (
+          ) : (
 
-      <>
+            <>
 
-        <div className="action-row">
+              <div className="action-row">
 
-          <button
-            className="primary-btn"
-            onClick={fetchValidationRules}
-            disabled={loading}
-          >
-            Fetch Validation Rules
-          </button>
+                <button
+                  className="primary-btn"
+                  onClick={fetchValidationRules}
+                  disabled={loading}
+                >
+                  Fetch Validation Rules
+                </button>
 
-          <button
-            className="enable-btn"
-            onClick={() => toggleAllRules(true)}
-            disabled={loading}
-          >
-            Enable All
-          </button>
+                <button
+                  className="enable-btn"
+                  onClick={() => toggleAllRules(true)}
+                  disabled={loading}
+                >
+                  Enable All
+                </button>
 
-          <button
-            className="disable-btn"
-            onClick={() => toggleAllRules(false)}
-            disabled={loading}
-          >
-            Disable All
-          </button>
+                <button
+                  className="disable-btn"
+                  onClick={() => toggleAllRules(false)}
+                  disabled={loading}
+                >
+                  Disable All
+                </button>
 
-        </div>
+              </div>
 
-        <div className="logout-section">
+              <div className="logout-section">
 
-          <button
-            className="logout-btn"
-            onClick={logoutFromSalesforce}
-            disabled={loading}
-          >
-            Logout
-          </button>
+                <button
+                  className="logout-btn"
+                  onClick={logoutFromSalesforce}
+                  disabled={loading}
+                >
+                  Logout
+                </button>
 
-        </div>
+              </div>
 
-      </>
+            </>
 
-    )
+          )
 
-  }
+        }
 
-</div>
+      </div>
       {
         loading && (
           <p className="loading-text">

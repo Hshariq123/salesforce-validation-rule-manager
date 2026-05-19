@@ -285,14 +285,14 @@ app.get('/logout', async (req, res) => {
 
     try {
 
-
-
         accessToken = '';
         instanceUrl = '';
         conn = null;
-        res.json({
-            message: 'Logout successful'
-        });
+
+        res.redirect(
+            'https://login.salesforce.com/secur/logout.jsp?retUrl=https://salesforce-validation-rule-manager-flame.vercel.app'
+        );
+
     } catch (error) {
 
         console.log(error);
