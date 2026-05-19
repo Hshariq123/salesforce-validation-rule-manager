@@ -19,8 +19,6 @@ function App() {
   }, []);
   const loginToSalesforce = () => {
 
-    localStorage.setItem('salesforceLoggedIn', 'true');
-
     window.location.href =
       'https://salesforce-validation-rule-manager-ad6h.onrender.com/login';
   };
