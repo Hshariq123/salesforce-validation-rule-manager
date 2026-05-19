@@ -24,17 +24,30 @@ function App() {
     window.location.href =
       'https://salesforce-validation-rule-manager-ad6h.onrender.com/login';
   };
-  const logoutFromSalesforce = () => {
+ const logoutFromSalesforce = async () => {
 
-    localStorage.removeItem('salesforceLoggedIn');
+  try {
+
+    await axios.get(
+      'https://salesforce-validation-rule-manager-ad6h.onrender.com'
+    );
+
+    localStorage.removeItem(
+      'salesforceLoggedIn'
+    );
 
     setRules([]);
 
     setIsLoggedIn(false);
 
     window.location.href =
-      'https://salesforce-validation-rule-manager-ad6h.onrender.com/logout';
-  };
+      'https://salesforce-validation-rule-manager-flame.vercel.app';
+
+  } catch (error) {
+
+    console.log(error);
+  }
+};
   const fetchValidationRules = async () => {
 
     try {
