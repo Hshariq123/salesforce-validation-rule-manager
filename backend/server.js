@@ -288,8 +288,7 @@ app.get('/logout', async (req, res) => {
         conn = null;
 
         res.redirect(
-            'https://login.salesforce.com/secur/logout.jsp?retUrl=https%3A%2F%2Fsalesforce-validation-rule-manager-flame.vercel.app'
-        );
+'https://login.salesforce.com/secur/logout.jsp?retUrl=https%3A%2F%2Flogin.salesforce.com'        );
 
     } catch (error) {
 
